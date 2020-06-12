@@ -1,5 +1,5 @@
 sudo: required
-language: generic 
+language: generic
 services:
   - docker
 before_install:
@@ -13,9 +13,9 @@ after_success:
   - docker build -t sgnarl/multi-nginx ./nginx
   - docker build -t sgnarl/multi-server ./server
   - docker build -t sgnarl/multi-worker ./worker
-  #Log in to the docker CLI
-  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  #push images to docker hub
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push images to docker hub
   - docker push sgnarl/multi-client
   - docker push sgnarl/multi-nginx
   - docker push sgnarl/multi-server
